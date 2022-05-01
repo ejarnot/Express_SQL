@@ -17,6 +17,6 @@ const Query = (query, values) => {
             resolve(results);
         })
     })
-}
+};
 
-module.exports = { Query, employees }
+module.exports = Query

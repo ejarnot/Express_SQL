@@ -1,25 +1,25 @@
-const { Query } = require("../models")
+const Query  = require("../models")
 
-const allEmployees = async = () => {
-    return Query("SELECT EmployeeID, FirstName, LastName, Title FROM employees")
+const allEmployees = async () => {
+    return await Query("SELECT * FROM employees")
 }
 
-const oneEmployee = async = (id) => {
-    return Query("SELECT EmployeeID, FirstName, LastName, Title FROM employees", [
+const oneEmployee = async (id) => {
+    return await Query("SELECT * FROM employees WHERE EmployeeId = ?", [
         id,
     ]);
 }
 
-const addEmployee = async = (body) =>{
-    return Query("INSERT INTO employees SET ?", [body])
+const addEmployee = async (employee) =>{
+    return await Query("INSERT INTO employees SET ?", [employee])
 }
 
-const updateEmployee = async = (body, id) =>{
-    return Query("UPDATE employees SET ? WHERE EmployeeID = ?", [body, id])
+const updateEmployee = async(employeeDetails, id) =>{
+    return await Query("UPDATE employees SET ? WHERE EmployeeID = ?", [employeeDetails, id])
 }
 
-const removeEmployee = async = (id) => {
-    return Query("DELETE FROM employees WHERE EmployeeID = ?", [id])
+const removeEmployee = async(id) => {
+    return await Query("DELETE FROM employees WHERE EmployeeID = ?", [id])
 }
 
 module.exports = {
